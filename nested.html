@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Nested</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="./assets/css/boilerplate.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 text-center col3">
+            <h1>Bootstrap Nested Columns 1</h1>
+        </div>
+    </div>
+    <!--<div class="row">-->
+        <!--<div class="col-md-6 col2">-->
+            <!--<h2>Column 1 .container</h2>-->
+            <!--<p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-6 col4">-->
+            <!--<h2>Column 2 .container</h2>-->
+            <!--<p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <!--<div class="col-md-6 col1">-->
+            <!--<h2>Column 3 .container-fluid</h2>-->
+            <!--<p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-6 col3">-->
+            <!--<h2>Column 4 .container-fluid</h2>-->
+            <!--<p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>-->
+        <!--</div>-->
+        <div class="col-xs-12 col-sm-6 col-md-6 col1">
+            <h2>Column 5 .container-fluid</h2>
+            <p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col2">
+                    <h3>Column 5 - 1</h3>
+                    <p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col4">
+                    <h3>Column 5 - 2</h3>
+                    <p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col2">
+            <h2>Column 6 .container-fluid</h2>
+            <p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col3">
+                    <h3>Column 6 - 1 </h3>
+                    <p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col5">
+                    <h3>Column 6 -2</h3>
+                    <p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col3">
+            <h2>Column Seven</h2>
+            <p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col5">
+            <h2>Column Eight</h2>
+            <p>Some ipsum loren Some ipsum loren Some ipsum loren Some ipsum loren.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-6 col-md-offset-4 col1">
+            <h2>Column Nine</h2>
+            <p>I am offset col-xs-offset-3 col-sm-offset-6 col-md-offset-4 columns.<strong>They all work!!!!!!</strong> Lion Some ipsum loren Some ipsum loren.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 col5">
+            <h2>Column Ten</h2>
+            <p>I am a col-xs-6 column, and col-xs-offset-3 so it'll alwaysremain in the center.This is one of the ways
+                of centering a 50% width column.</p>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-9 col-xs-push-3 col3">
+            <h2>Push Column</h2>
+            <p>I am a col-xs-9, col-xs-push-3. So, I move 3 columns towards right.</p>
+        </div>
+        <div class="col-xs-3 col-xs-pull-9 col1">
+            <h2>Pull Column</h2>
+            <p>I am a col-xs-3, col-xs-pull-9. So, I move 9 columns towards the LEFT.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
