@@ -1,0 +1,18 @@
+body {
+    /*color: red;*/
+}
+
+p.text {
+    float:left;
+    width: 60%;
+}
+
+div.img-wrap {
+    width: 40%;
+    float: right;
+}
+
+img.responsive {
+    max-width: 100%;
+    height: auto;
+}
