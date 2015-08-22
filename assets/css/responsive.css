@@ -2,7 +2,7 @@ body {
     /*color: red;*/
 }
 
-p.text {
+div.text {
     float:left;
     width: 60%;
 }
@@ -15,4 +15,24 @@ div.img-wrap {
 img.responsive {
     max-width: 100%;
     height: auto;
+}
+
+div.video-wrap {
+    position: relative;
+    padding-bottom: 55%;
+    /*padding-top: 30px;*/
+    height: 0;
+    overflow:hidden;
+}
+
+div.video-wrap iframe {
+    position: absolute;
+    width:100%;
+    height:100%;
+    top: 0;
+}
+
+div.video-outer-wrap{
+    width: 1000px;
+    max-widows: 100%;
 }
