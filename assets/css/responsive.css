@@ -51,3 +51,27 @@ div.video-wrap iframe {
 img.media-query-img {
     height: auto; /* this works with all @media screen */
 }
+
+/*Responsive Typo demonstration*/
+/*Using media query to check Portrait and Landscape*/
+
+/*base html font style*/
+html {
+    font-size: 12px;
+}
+
+p.b {
+    font-size: 2rem; /* 2:1 the root font size REM: Root font-size */
+}
+
+@media screen and (orientation: landscape){
+    p.a {
+        font-size: 3rem; /* 3: 1 root EM */
+    }
+}
+
+@media screen and (orientation: portrait){
+    p.a {
+        font-size: 1rem;
+    }
+}
