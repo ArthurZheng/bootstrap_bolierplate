@@ -75,3 +75,60 @@ p.b {
         font-size: 1rem;
     }
 }
+
+/*using css transform: rotate property for rotating*/
+p.rotate {
+
+    /* Chrome, Safari 3.1+*/
+    -webkit-transform: rotate(-90deg);
+    /* Firefox 3.5-15 */ -moz-transform: rotate(-90deg);
+    /* IE9 */
+    -ms-transform: rotate(-90deg);
+    /* Opera 10.50-12*/
+    -o-transform: rotate(-90deg);
+    /* IE */
+    transform: rotate(-90deg);
+}
+
+div.container {
+    padding: 30px;
+    background-color: aquamarine;
+}
+
+ul {
+    /*max-width: 100%;*/
+    list-style: none;
+    font-size: 36px;
+}
+
+/*ul li:nth-of-type(even){*/
+   /*background-color: deeppink;*/
+    /*color: #f0f0f0;*/
+/*}*/
+
+
+ul:first-of-type > li:nth-child(2) {
+    background-color: deeppink;
+    color: #f0f0f0;
+}
+
+p + ul li:last-child {
+    color: blue;
+}
+
+ul:first-of-type > li:nth-last-child(2) {
+    color:red;
+    font-weight: bold;
+}
+
+ul:nth-last-of-type(2) {
+    background-color: gold;
+}
+
+ul:nth-last-of-type(2) > li:nth-child(1) {
+    background-color: teal;
+    color: white;
+}
+
+ul:last-of-type
+
