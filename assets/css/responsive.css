@@ -1,7 +1,4 @@
-body {
-    /*color: red;*/
-}
-
+/*for making responsive image with width percenage*/
 div.text {
     float:left;
     width: 60%;
@@ -13,26 +10,44 @@ div.img-wrap {
 }
 
 img.responsive {
-    max-width: 100%;
-    height: auto;
+    max-width: 100%; /* forces the img to be 100% width of its parent; */
+    height: auto; /* matains ratio */
+}
+
+/*make iframe responsive */
+div.video-outer-wrap{
+    width: 1000px; /* give a fix width to the outer most wrapper for the iframe */
+    max-width: 100%; /* froces it 100% width to its parent; */
 }
 
 div.video-wrap {
-    position: relative;
+    position: relative; /* make it position relative to the parent */
     padding-bottom: 55%;
-    /*padding-top: 30px;*/
+    padding-top: 30px;
     height: 0;
-    overflow:hidden;
+    overflow:hidden; /* hide overflow part */
 }
 
 div.video-wrap iframe {
-    position: absolute;
-    width:100%;
+    position: absolute; /* iframe position absolute to the video-wrap div */
+    width:100%; /* width and height both 100% */
     height:100%;
     top: 0;
 }
 
-div.video-outer-wrap{
-    width: 1000px;
-    max-widows: 100%;
+/*using media query as condition for the browser to render different size of images*/
+@media screen and (max-width: 1000px){
+    img.media-query-img {width: 400px; }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 1200px){
+    img.media-query-img {width: 800px;}
+}
+
+@media screen and (min-width: 1200px) {
+    img.media-query-img {width: 1100px;}
+}
+
+img.media-query-img {
+    height: auto; /* this works with all @media screen */
 }
