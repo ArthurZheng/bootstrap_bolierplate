@@ -92,7 +92,7 @@ p.rotate {
 
 div.container {
     padding: 30px;
-    background-color: aquamarine;
+    /*background-color: aquamarine;*/
 }
 
 ul {
@@ -130,5 +130,16 @@ ul:nth-last-of-type(2) > li:nth-child(1) {
     color: white;
 }
 
-ul:last-of-type
+h2.hashtag {
+    border: 2px solid red;
+    font-size: 40px;
+    display: block;
+}
 
+/*for the jQuery flip plugin*/
+
+div.back.enquiry-form {
+    background-color: grey;
+    opacity:0.6;
+    padding-left: 15px;
+}
