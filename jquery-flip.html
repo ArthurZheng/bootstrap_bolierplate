@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!--for jquery flip plugin-->
@@ -15,6 +14,7 @@
 
     <!--for icon-moon fonts-->
     <link rel="stylesheet" href="./assets/css/icon-moon-style.css">
+
 
 </head>
 
@@ -134,6 +134,32 @@
 
 
 <div class="container">
+    <h2>Alerts</h2>
+    <p>The a element with class="close" and data-dismiss="alert" is used to close the alert box.</p>
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times; &nbsp;</a>
+        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+    </div>
+    <div class="alert alert-info">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
+    </div>
+    <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+    </div>
+    <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+    </div>
+
+    <div data-role="panel" id="mypanel" data-position="right" data-display="push">
+         panel content goes here
+    </div>
+
+</div>
+
+<div class="container">
     <h1>jQuery Flip</h1>
     <div id="card">
         <div class="front">
@@ -174,7 +200,7 @@
                     <i class="icon"></i>
                     <!--ngIf: result.properties.bedrooms <span ng-if="result.properties.bedrooms" class="ng-binding ng-scope">6</span> end ngIf: result.properties.bedrooms -->
                     <!-- ngIf: !result.properties.bedrooms -->
-                    <span class="icon-apartment">6</span>
+                    <span class="icon-apartment">&nbsp;6</span>
 
                 </div>
 
@@ -182,14 +208,14 @@
                     <i class="icon"></i>
                     <!--ngIf: result.properties.bathrooms <span ng-if="result.properties.bathrooms" class="ng-binding ng-scope">3</span> end ngIf: result.properties.bathrooms -->
                     <!-- ngIf: !result.properties.bathrooms -->
-                    <span class="icon-bath">3</span>
+                    <span class="icon-bath">&nbsp;3</span>
                 </div>
 
                 <div class="property-car-spaces grid-property-meta-item" title="3 Car Spaces">
                     <i class="icon"></i>
                     <!--ngIf: result.properties.car_spaces <span ng-if="result.properties.car_spaces" class="ng-binding ng-scope">3</span> end ngIf: result.properties.car_spaces -->
                     <!-- ngIf: !result.properties.car_spaces -->
-                    <span class="icon-car">3</span>
+                    <span class="icon-car">&nbsp;3</span>
                 </div>
 
             </div>
@@ -198,6 +224,7 @@
 
         </div>
         <div class="back enquiry-form">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <h3>Ask about this property</h3>
             <div class="row">
                 <div class="col-xs-4">
@@ -241,12 +268,17 @@
 <script>
     $(document).ready(function(){
        $("#card").flip({
-//           axis: 'y',
-           trigger: 'hover',
+           trigger: 'manual',
            autoSize: false,
            speed: 1000,
-           reverse: false
        });
+
+        $(".front img").click(function() {
+            $("#card").flip(true);
+        });
+        $(".back .close").click(function() {
+            $("#card").flip(false);
+        });
     });
 </script>
 </body>
