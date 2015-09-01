@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Google Map JS V3</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Google Maps Multiple Markers</title>
+    <!--google map cdn-->
+    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <!--google map customize info window infobox plugin-->
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--<link href="./assets/css/boilerplate.css" rel="stylesheet">-->
+</head>
+
+<body>
+    <div class="container" style="background-color: antiquewhite">
+        <h1>Google Places API JavaScript Library</h1>
+        <hr>
+        <h3>This is how to plot points on Google Map (Zoom: 5, Center: Canberra)</h3>
+        <div id="map1" style="width: 500px; height: 400px;"></div><br>
+    </div>
+
+    <div class="container" style="background-color: #449fdb">
+        <h3>This is how to plot points on Google Map (Zoom: 13, Center: Little Bourke Melbourne</h3>
+        <div id="map2" style="width: 500px; height: 400px;"></div>
+    </div>
+
+    <div class="container" style="background-color:skyblue">
+            <h3>How to Group Markers, Use Marker Clusterer</h3>
+            <p><a href="https://developers.google.com/maps/articles/toomanymarkers?hl=en">Too Many Markers!!</a></p>
+            <p><a href="https://googlemaps.github.io/js-marker-clusterer/examples/advanced_example.html">JS Marker Clusterer To the Rescue!</a></p>
+            <p><a href="https://googlemaps.github.io/js-marker-clusterer/docs/examples.html">JS Marker Clusterer Examples</a></p>
+            <p><a href="https://googlemaps.github.io/js-marker-clusterer/docs/reference.html">JS Marker Clusterer References</a></p>
+            <p><a href="https://github.com/googlemaps/js-marker-clusterer">JS Marker Clusterer GitHub</a></p>
+            <p><a href="http://jsfiddle.net/B3a86/2/">JS Marker Clusterer JSFiddle</a></p>
+            <p><a href="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclustererplus/docs/reference.html">JS Marker Clusterer PLUS</a></p>
+            <p><a href="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclustererplus/examples/advanced_example.html">JS Marker Clusterer PLUS Advanced Example</a></p>
+            <p><a href="https://code.google.com/p/google-maps-utility-library-v3/wiki/Libraries">JS Marker Clusterer PLUS Wiki</a></p>
+            <!--<div id="map2" style="width: 500px; height: 400px;"></div>-->
+     </div>
+
+    <div class="container" style="background-color:sandybrown">
+        <h3>How to Cutomize Google Map Info Window</h3>
+        <p><a href="http://jsfiddle.net/jEhJ3/597/">GOTO: Using Infobox Plugin -- JS Fillde Example</a></p>
+
+        <div id="map3" style="width: 100%; height: 300px"></div>
+        <br>
+
+        <p>InfoBox as an easily customizable replacement for an InfoWindow.
+            Click on the marker to see the infobox generated with custom html &amp; css.</p>
+        <div class="infobox-wrapper" style="display: none">
+            <div id="infobox">
+                <img src="./assets/img/house1.jpeg" width="300" height="200" alt="Picture of Cheetah"/>
+
+                <div class="grid-property-information" style="background-color: ghostwhite">
+
+                    <div class="property-badge-House property-badge" title="House"></div>
+
+                    <div class="property-suburb ng-binding">
+                        Morwell, VIC
+                    </div>
+
+                    <div class="property-address ng-binding">
+                        1-3/3 Henry Street
+                        <small style="color: darkgray" class="ng-binding">New<!--#if--></small>
+                    </div>
+
+                    <div class="property-price">
+                        <span ng-if="result.properties.max_price &amp;&amp; result.properties.min_price != 0" class="property-min-price ng-binding ng-scope">
+                        $255,000<span ng-if="result.properties.max_price == 0" class="ng-scope">+</span>
+                    </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container" style="background-color:pink">
+        <h3>Using Infobox Plugin to Customize Google Map Info Window</h3>
+        <!--<div id="map4" style="width: 500px; height: 400px;"></div>-->
+        <div id="map4" style="width: 100%; height: 300px"></div>
+
+        <br>
+
+        <p>InfoBox as an easily customizable replacement for an InfoWindow.
+            Click on the marker to see the infobox generated with custom html &amp; css.</p>
+        <div class="infobox-wrapper2" style="display:none">
+            <div id="infobox2">
+                <img src="./assets/img/house1.jpeg" width="300" height="200" alt="Picture of Cheetah"/>
+
+                <div class="grid-property-information" style="background-color: ghostwhite">
+
+                    <div class="property-badge-House property-badge" title="House"></div>
+
+                    <div class="property-suburb ng-binding">
+                        Morwell, VIC
+                    </div>
+
+                    <div class="property-address ng-binding">
+                        1-3/3 Henry Street
+                        <small style="color: darkgray" class="ng-binding">New<!--#if--></small>
+                    </div>
+
+                    <div class="property-price">
+                        <span ng-if="result.properties.max_price &amp;&amp; result.properties.min_price != 0" class="property-min-price ng-binding ng-scope">
+                        $255,000<span ng-if="result.properties.max_price == 0" class="ng-scope">+</span>
+                    </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+
+    var locations = [
+        ['Bondi Beach', -33.890542, 151.274856, 4],
+        ['Coogee Beach', -33.923036, 151.259052, 5],
+        ['Cronulla Beach', -34.028249, 151.157507, 3],
+        ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+        ['Maroubra Beach', -33.950198, 151.259302, 1],
+        ['20 Queen Street', -37.818266, 144.962388],
+        ['Flinders Street Station', -37.817798, 144.967163],
+        ['China Town Melbourne', -37.811412, 144.969100],
+        ['Melbourne Southern Cross Station', -37.818458, 144.952591],
+        ['Crown Casino Melbourne', -37.824156, 144.956275],
+        ['114 Clyde Street Ballarat', -37.549653, 143.855988],
+        ['1130 Sturt Street Ballarat', -37.560180, 143.843647],
+        ['Gear Dr Mt Helen Ballarat', -37.629757, 143.895329],
+        ['FedUni SMB Campus Ballarat', -37.565289, 143.857883]
+    ];
+
+    var locations2 = [
+        ['20 Queen Street', -37.818266, 144.962388],
+        ['Flinders Street Station', -37.817798, 144.967163],
+        ['China Town Melbourne', -37.811412, 144.969100],
+        ['Melbourne Southern Cross Station', -37.818458, 144.952591],
+        ['Crown Casino Melbourne', -37.824156, 144.956275],
+        ['114 Clyde Street Ballarat', -37.549653, 143.855988],
+        ['1130 Sturt Street Ballarat', -37.560180, 143.843647],
+        ['Gear Dr Mt Helen Ballarat', -37.629757, 143.895329],
+        ['FedUni SMB Campus Ballarat', -37.565289, 143.857883]
+    ];
+
+    var locations4 = [
+        ['20 Queen Street', -37.818266, 144.962388],
+        ['Flinders Street Station', -37.817798, 144.967163],
+        ['China Town Melbourne', -37.811412, 144.969100],
+        ['Melbourne Southern Cross Station', -37.818458, 144.952591],
+        ['Crown Casino Melbourne', -37.824156, 144.956275],
+        ['114 Clyde Street Ballarat', -37.549653, 143.855988],
+        ['1130 Sturt Street Ballarat', -37.560180, 143.843647],
+        ['Gear Dr Mt Helen Ballarat', -37.629757, 143.895329],
+        ['FedUni SMB Campus Ballarat', -37.565289, 143.857883]
+    ];
+
+//    code for map1
+    var map1 = new google.maps.Map(document.getElementById('map1'), {
+        zoom: 5,
+        center: new google.maps.LatLng(-35.29752, 149.13427), // center is Canberra;
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map1
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map1, marker);
+            }
+        })(marker, i));
+    }
+
+//    code for map 2
+    var map2 = new google.maps.Map(document.getElementById('map2'), {
+        zoom: 13,
+        center: new google.maps.LatLng(-37.81289,144.96448), // center is Little Bourke Melbourne
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations2.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations2[i][1], locations2[i][2]),
+            map: map2
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent(locations2[i][0]);
+                infowindow.open(map2, marker);
+            }
+        })(marker, i));
+    }
+
+//   code for google map infobox infowindow customize plugin code
+    function initialize() {
+        var loc, map3, marker, infobox;
+
+        loc = new google.maps.LatLng(-37.824156, 144.956275);
+
+        map3 = new google.maps.Map(document.getElementById("map3"), {
+            zoom: 12,
+            center: loc,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        marker = new google.maps.Marker({
+            map: map3,
+            position: loc,
+            visible: true
+        });
+
+        infobox = new InfoBox({
+            content: document.getElementById("infobox"),
+            disableAutoPan: false,
+            maxWidth: 150,
+            pixelOffset: new google.maps.Size(-140, 0),
+            zIndex: null,
+            boxStyle: {
+                background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/examples/tipbox.gif') no-repeat",
+                opacity: 0.75,
+                width: "280px"
+            },
+            closeBoxMargin: "12px 4px 2px 2px",
+            closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+            infoBoxClearance: new google.maps.Size(1, 1)
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infobox.open(map3, this);
+            map3.panTo(loc);
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+    //    code for map 4  customize info window with infobox plugin
+    var map4 = new google.maps.Map(document.getElementById('map4'), {
+        zoom: 13,
+        center: new google.maps.LatLng(-37.824156, 144.956275), // center is Canberra;
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow2 = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations4.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations4[i][1], locations4[i][2]),
+            map: map4
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow2.setContent(locations4[i][0]);
+                infowindow2.open(map4, marker);
+            }
+        })(marker, i));
+    }
+</script>
+
+</body>
+</html>
