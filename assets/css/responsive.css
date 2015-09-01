@@ -136,10 +136,37 @@ h2.hashtag {
     display: block;
 }
 
+/*for icon-moon fonts*/
+@font-face {
+    font-family: 'icomoon';
+    /*src:url('../fonts/icomoon.eot?-4xsvbo');*/
+    /*src:url('../fonts/icomoon.eot?#iefix-4xsvbo') format('embedded-opentype'),*/
+    /*url('../fonts/icomoon.ttf?-4xsvbo') format('truetype'),*/
+    /*url('../fonts/icomoon.woff?-4xsvbo') format('woff'),*/
+    /*url('../fonts/icomoon.svg?-4xsvbo#icomoon') format('svg');*/
+
+    src:url('../fonts/icomoon.eot?-4xsvbo');
+    src:url('../fonts/icomoon.eot?#iefix-4xsvbo') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?-4xsvbo') format('truetype'),
+    url('../fonts/icomoon.woff?-4xsvbo') format('woff'),
+    url('../fonts/icomoon.svg?-4xsvbo#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /*for the jQuery flip plugin*/
 
 div.back.enquiry-form {
     background-color: grey;
     opacity:0.6;
     padding-left: 15px;
+}
+
+div.grid-property-meta div.grid-property-source div.grid-property-information {
+    background-color: white;
+}
+
+html {
+    background-color: #f6f5f1
+;
 }
