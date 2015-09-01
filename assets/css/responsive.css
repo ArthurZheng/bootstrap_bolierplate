@@ -162,11 +162,15 @@ div.back.enquiry-form {
     padding-left: 15px;
 }
 
-div.grid-property-meta div.grid-property-source div.grid-property-information {
-    background-color: white;
+div.front.grid-property-meta{
+    background-color: red;
 }
 
 html {
     background-color: #f6f5f1
 ;
+}
+
+body {
+    background-color: #f6f5f1;
 }
