@@ -13,138 +13,12 @@
     <link rel="stylesheet" href="./assets/css/responsive.css" />
 
     <!--for icon-moon fonts-->
-    <link rel="stylesheet" href="./assets/css/icon-moon-style.css">
+    <link rel="stylesheet" href="./assets/fonts/style.css">
 
 
 </head>
 
 <body>
-
-<!--<div class="navbar navbar-default">-->
-    <!--<div class="container-fluid">-->
-        <!--&lt;!&ndash;<h1>Navigation System</h1>&ndash;&gt;-->
-        <!--<div class="navbar-header">-->
-            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">-->
-                <!--<span class="icon-bar"></span>-->
-                <!--<span class="icon-bar"></span>-->
-                <!--<span class="icon-bar"></span>-->
-            <!--</button>-->
-            <!--<a class="navbar-brand" href="#">Techtransformers</a>-->
-        <!--</div>-->
-        <!--<div class="collapse  navbar-collapse" id="mynavbar-content">-->
-            <!--<ul class="nav navbar-nav">-->
-                <!--<li class="active"><a href="#">Home</a></li>-->
-                <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="#">Board of Members</a></li>-->
-                        <!--<li><a href="#">Developers Team</a></li>-->
-                        <!--<li><a href="#">Designing Team</a></li>-->
-                        <!--<li class="divider"></li>-->
-                        <!--<li><a href="#">Investors</a></li>-->
-                        <!--<li><a href="#">Shareholders</a></li>-->
-                    <!--</ul>-->
-                <!--</li>-->
-                <!--<li><a href="#">Pricing</a></li>-->
-                <!--<li><a href="#">Contact</a></li>-->
-                <!--<li><a href="#">Feedback</a></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-<!--<div class="container">-->
-    <!--<div class="col-lg-3 col-md-4 col-sm-4 ng-scope">-->
-
-        <!--<div class="grid-property">-->
-
-            <!--<a href="http://www.domain.com.au/property/?adid=2011328662" onclick="trackOutboundLink($(this).attr('href'));" target="_blank" rel="nofollow" class="grid-property-a" title="">-->
-
-                <!--<div class="grid-property-image">-->
-                    <!--&lt;!&ndash; ngIf: result.properties.image_thumb &ndash;&gt;-->
-                    <!--<span ng-if="result.properties.image_thumb" class="ng-scope"><img ng-src="http://i.domainstatic.com.au/9f99cab5-642b-4976-b4ed-f480df8564a8/domain/20113286621pipl24145840" src="http://i.domainstatic.com.au/9f99cab5-642b-4976-b4ed-f480df8564a8/domain/20113286621pipl24145840"></span>&lt;!&ndash; end ngIf: result.properties.image_thumb &ndash;&gt;-->
-                    <!--&lt;!&ndash; ngIf: !result.properties.image_thumb &ndash;&gt;-->
-                <!--</div>-->
-
-                <!--<div class="grid-property-information">-->
-
-                    <!--<div class="property-badge-House property-badge" title="House"></div>-->
-
-                    <!--<div class="property-suburb ng-binding">-->
-                        <!--Morwell, VIC-->
-                    <!--</div>-->
-
-                    <!--<div class="property-address ng-binding">-->
-                        <!--1-3/3 Henry Street-->
-                        <!--<small style="color: darkgray" class="ng-binding">New&lt;!&ndash;#if&ndash;&gt;</small>-->
-                    <!--</div>-->
-
-                    <!--<div class="property-price">-->
-                        <!--&lt;!&ndash; ngIf: result.properties.max_price && result.properties.min_price != 0 &ndash;&gt;<span ng-if="result.properties.max_price &amp;&amp; result.properties.min_price != 0" class="property-min-price ng-binding ng-scope">-->
-                        <!--$255,000&lt;!&ndash; ngIf: result.properties.max_price == 0 &ndash;&gt;<span ng-if="result.properties.max_price == 0" class="ng-scope">+</span>&lt;!&ndash; end ngIf: result.properties.max_price == 0 &ndash;&gt;-->
-                    <!--</span>&lt;!&ndash; end ngIf: result.properties.max_price && result.properties.min_price != 0 &ndash;&gt;-->
-                        <!--&lt;!&ndash; ngIf: !result.properties.min_price &ndash;&gt;-->
-                        <!--&lt;!&ndash; ngIf: result.properties.max_price && result.properties.max_price != 0 &ndash;&gt;-->
-                    <!--</div>-->
-
-                <!--</div>-->
-
-                <!--<div class="grid-property-source">-->
-                    <!--<span class="grid-property-source-label">Found on:</span>-->
-                    <!--&lt;!&ndash; ngIf: result.properties.url_domain != '' &ndash;&gt;<span ng-if="result.properties.url_domain != ''" class="ng-scope"><img src="./assets/img/domain-com-au.jpg" alt="View this listing on Domain.com.au"></span>&lt;!&ndash; end ngIf: result.properties.url_domain != '' &ndash;&gt;-->
-                    <!--&lt;!&ndash; ngIf: result.properties.url_domain == '' && result.properties.url_rea != '' &ndash;&gt;-->
-                <!--</div>-->
-
-                <!--<div class="grid-property-meta">-->
-
-                    <!--<div class="property-bedrooms grid-property-meta-item first" title="6 Bedroom">-->
-                        <!--<i class="icon"></i>-->
-                         <!--&lt;!&ndash;ngIf: result.properties.bedrooms <span ng-if="result.properties.bedrooms" class="ng-binding ng-scope">6</span> end ngIf: result.properties.bedrooms &ndash;&gt;-->
-                        <!--&lt;!&ndash; ngIf: !result.properties.bedrooms &ndash;&gt;-->
-                        <!--<span class="icon-apartment">6</span>-->
-
-                    <!--</div>-->
-
-                    <!--<div class="property-bathrooms grid-property-meta-item" title="3 Bathrooms">-->
-                        <!--<i class="icon"></i>-->
-                         <!--&lt;!&ndash;ngIf: result.properties.bathrooms <span ng-if="result.properties.bathrooms" class="ng-binding ng-scope">3</span> end ngIf: result.properties.bathrooms &ndash;&gt;-->
-                        <!--&lt;!&ndash; ngIf: !result.properties.bathrooms &ndash;&gt;-->
-                        <!--<span class="icon-bath">3</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="property-car-spaces grid-property-meta-item" title="3 Car Spaces">-->
-                        <!--<i class="icon"></i>-->
-                         <!--&lt;!&ndash;ngIf: result.properties.car_spaces <span ng-if="result.properties.car_spaces" class="ng-binding ng-scope">3</span> end ngIf: result.properties.car_spaces &ndash;&gt;-->
-                        <!--&lt;!&ndash; ngIf: !result.properties.car_spaces &ndash;&gt;-->
-                        <!--<span class="icon-car">3</span>-->
-                    <!--</div>-->
-
-                <!--</div>-->
-
-                <!--<div class="clearfix"></div>-->
-
-            <!--</a>-->
-
-        <!--</div>-->
-
-    <!--</div>-->
-<!--</div>-->
-
-
-
-<div class="container">
-    <h2>Alerts</h2>
-    <p>The a element with class="close" and data-dismiss="alert" is used to close the alert box.</p>
-    <div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times; &nbsp;</a>
-        <strong>Success!</strong> This alert box could indicate a successful or positive action.
-    </div>
-    <div class="alert alert-info">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
-    </div>
-</div>
 
 <div class="container">
     <h1>jQuery Flip</h1>
@@ -187,7 +61,7 @@
                     <i class="icon"></i>
                     <!--ngIf: result.properties.bedrooms <span ng-if="result.properties.bedrooms" class="ng-binding ng-scope">6</span> end ngIf: result.properties.bedrooms -->
                     <!-- ngIf: !result.properties.bedrooms -->
-                    <span class="icon-apartment">&nbsp;6</span>
+                    <span class="icon-bed">&nbsp;6</span>
 
                 </div>
 
@@ -202,8 +76,41 @@
                     <i class="icon"></i>
                     <!--ngIf: result.properties.car_spaces <span ng-if="result.properties.car_spaces" class="ng-binding ng-scope">3</span> end ngIf: result.properties.car_spaces -->
                     <!-- ngIf: !result.properties.car_spaces -->
+                    <span class="icon-apartment">&nbsp;3</span>
+                </div>
+
+                <div class="property-car-spaces grid-property-meta-item" title="3 Car Spaces">
+                    <i class="icon"></i>
+                    <!--ngIf: result.properties.car_spaces <span ng-if="result.properties.car_spaces" class="ng-binding ng-scope">3</span> end ngIf: result.properties.car_spaces -->
+                    <!-- ngIf: !result.properties.car_spaces -->
                     <span class="icon-car">&nbsp;3</span>
                 </div>
+
+                <div class="property-car-spaces grid-property-meta-item" title="3 Car Spaces">
+                    <i class="icon"></i>
+                    <!--ngIf: result.properties.car_spaces <span ng-if="result.properties.car_spaces" class="ng-binding ng-scope">3</span> end ngIf: result.properties.car_spaces -->
+                    <!-- ngIf: !result.properties.car_spaces -->
+                    <span class="icon-house">&nbsp;3</span>
+                </div>
+                 <div class="property-car-spaces grid-property-meta-item" title="3 Car Spaces">
+                    <i class="icon"></i>
+                    <!--ngIf: result.properties.car_spaces <span ng-if="result.properties.car_spaces" class="ng-binding ng-scope">3</span> end ngIf: result.properties.car_spaces -->
+                    <!-- ngIf: !result.properties.car_spaces -->
+                    <span class="icon-land">&nbsp;3</span>
+                </div>
+                 <div class="property-car-spaces grid-property-meta-item" title="3 Car Spaces">
+                    <i class="icon"></i>
+                    <!--ngIf: result.properties.car_spaces <span ng-if="result.properties.car_spaces" class="ng-binding ng-scope">3</span> end ngIf: result.properties.car_spaces -->
+                    <!-- ngIf: !result.properties.car_spaces -->
+                    <span class="icon-search">&nbsp;3</span>
+                </div>
+                 <div class="property-car-spaces grid-property-meta-item" title="3 Car Spaces">
+                    <i class="icon"></i>
+                    <!--ngIf: result.properties.car_spaces <span ng-if="result.properties.car_spaces" class="ng-binding ng-scope">3</span> end ngIf: result.properties.car_spaces -->
+                    <!-- ngIf: !result.properties.car_spaces -->
+                    <span class="icon-townhouse">&nbsp;3</span>
+                </div>
+
 
             </div>
 
@@ -211,42 +118,44 @@
 
         </div>
         <div class="back enquiry-form">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <h3>Ask about this property</h3>
+            <a href="#" class="close close-agent-form" data-dismiss="alert" aria-label="close">&times;</a>
+            <h4 class="text-left agent-form-heading">Ask about this property</h4>
             <div class="row">
                 <div class="col-xs-4">
-                    <img src="./assets/img/jun.png" class="img-responsive img-circle" alt="Image of Jun"/>
+                    <img src="./assets/img/jun.png" class="img-responsive img-circle" id="agent-photo" alt="Image of Jun"/>
                 </div>
-                <div class="col-xs-6">
-                    <p><b>Jun Zheng</b></p>
-                    <p>0405 402 888</p>
+                <div id="contact-info" class="col-xs-6">
+                    <p id="agent-name"><b>Jun Zheng</b></p>
+                    <p id="agent-phone">0405 402 888</p>
                 </div>
             </div>
+            <!--<div class="row">-->
             <form class="form-horizontal" role="form" method="post" action="">
                 <div class="form-group form-group-xs">
                     <label class="control-label col-xs-2" for="name">Name</label>
-                    <div class="col-xs-8">
+                    <div class="col-xs-10">
                         <input type="text" class="form-control" id="name" placeholder="Enter name">
                     </div>
                 </div>
                 <div class="form-group form-group-xs">
                     <label class="control-label col-xs-2" for="email">Email</label>
-                    <div class="col-xs-8">
+                    <div class="col-xs-10">
                         <input type="email" class="form-control input-xs" id="email" placeholder="Enter email">
                     </div>
                 </div>
                 <div class="form-group form-group-xs">
                     <label class="control-label col-xs-2" for="enquiry">Quick Enquiry</label>
-                    <div class="col-xs-8">
+                    <div class="col-xs-10">
                         <textarea class="form-control" rows="3" id="enquiry" placeholder="Your message here..."></textarea>
                     </div>
                 </div>
                 <div class="form-group form-group-xs">
-                    <div class="col-xs-offset-2 col-xs-8">
+                    <div class="col-xs-offset-2 col-xs-10">
                         <button type="submit" class="btn btn-success">Send</button>
                     </div>
                 </div>
             </form>
+        <!--</div>-->
         </div>
     </div>
 </div>

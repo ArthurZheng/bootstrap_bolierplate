@@ -1,0 +1,70 @@
+/*primary structure*/
+
+div.container {
+    max-width: 960px;
+    margin: 0 auto;
+    /*color: red;*/
+}
+
+section.module.parallax.parallax-1 {
+    background-image: url("../img/nature-bk-1.jpg");
+}
+
+section.module.parallax.parallax-2 {
+    background-image: url("../img/nature-bk-2.jpg");
+}
+
+section.module.parallax.parallax-3 {
+    background-image: url("../img/nature-bk-3.jpg");
+}
+
+section.module.content .container {
+    background-color: coral;
+}
+
+section.module.content .container p:last-child {
+    margin-bottom: 0;
+}
+
+div.container h2 {
+    margin-bottom: 40px;
+    font-family: "Roboto Slab", serif;
+    font-size: 30px;
+    color: yellow;
+}
+
+div.container p {
+    font-family: "Roboto Slab", serif;
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 40px 0;
+    color: #787878;
+}
+
+section.module.parallax {
+    height: 600px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+section.module.parallax h1 {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 58px;
+    line-height: 600px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+section.module p:last-child {
+    margin-bottom: 0;
+}
+
+section.module:last-child {
+    margin-bottom: 0;
+}
+

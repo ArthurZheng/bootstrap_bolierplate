@@ -157,9 +157,11 @@ h2.hashtag {
 /*for the jQuery flip plugin*/
 
 div.back.enquiry-form {
-    background-color: grey;
-    opacity:0.6;
+    background-color: #dbdbdb;
+    /*opacity:0.6;*/
     padding-left: 15px;
+    max-width: 24%;
+    font-size: 12px;
 }
 
 div.front.grid-property-meta{
@@ -173,4 +175,33 @@ html {
 
 body {
     background-color: #f6f5f1;
+}
+
+div#contact-info {
+
+}
+
+p#agent-name {
+    padding-top: 15px;
+}
+
+p#agent-phone {
+    padding-bottom: 30px;
+    margin-top: -10px;
+}
+
+img#agent-photo {
+    max-width: 60%;
+    margin-left: 40px;
+    margin-top: 13px;
+}
+
+a.close.close-agent-form {
+    padding-right: 15px;
+    padding-top: 10px;
+}
+
+
+h4.text-left.agent-form-heading {
+    padding-top: 8px;
 }

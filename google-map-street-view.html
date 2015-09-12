@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Street View</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--<script src="http://maps.googleapis.com/maps/api/js"></script>-->
+</head>
+
+<body>
+<div class="container">
+    <h1 class="text-center">Google Map Road View Street View Examples</h1>
+</div>
+<div class="container" style="background-color: cornflowerblue">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Google Map Road View</h3>
+            <div id="map" style="width:500px; height: 380px;"></div>
+        </div>
+        <div class="col-sm-6">
+            <h3>Google Map Panaramic View</h3>
+            <div id="pano" style="width:500px; height: 380px;"></div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="container" style="background-color: pink">
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>Definition and Usage (map.getBounds())</h3>
+            <p>The getBounds() method returns the south-west latitude/longitude and the north-east
+                latitude/longitude of the current viewport.
+                Specifies a rectangle from the points at its south-west and north-east corners</p>
+            <button class="btn btn-lg btn-info" onclick="alert(map.getBounds());">Get bounds</button>
+        </div>
+        <div class="col-xs-6">
+            <h3>Definition and Usage (map.getCenter())</h3>
+            <p>The getCenter() method returns the latitude/longitude of the current center of the map.</p>
+            <button class="btn btn-lg btn-primary" onclick="alert(map.getCenter());">Get Center</button>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container" style="background-color: greenyellow">
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>Definition and Usage (map.getNorthEast())</h3>
+            <p>Returns the north-east corner of this bounds.</p>
+            <button class="btn btn-lg btn-info" onclick="alert(map.getNorthEast());">Get NorthEast</button>
+        </div>
+        <div class="col-xs-6">
+            <h3>Definition and Usage (map.getSouthWest())</h3>
+            <p>Returns the south-west corner of this bounds.</p>
+            <button class="btn btn-lg btn-primary" onclick="alert(map.getSouthWest());">Get SouthWest</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Google Map API LatLngBounds and Set Bounds and Center</h1>
+    <p><img src="./assets/img/google.maps.LatLngBounds.png"></p>
+    <p><img src="./assets/img/google-map-set-bounds-center.png"></p>
+
+
+</div>
+<script>
+    /*
+     * Click the map to set a new location for the Street View camera.
+     */
+    var map;
+    var panorama;
+
+    function initMap() {
+        var myLocation = new google.maps.LatLng(-37.818266, 144.962388);
+        var streetView = new google.maps.StreetViewService();
+
+        panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
+
+        // Set up the map.
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: myLocation,
+            zoom: 16,
+            streetViewControl: false
+        });
+
+        // Set the initial Street View camera to the center of the map
+        streetView.getPanorama({location: myLocation, radius: 50}, processSVData);
+
+        // Look for a nearby Street View panorama when the map is clicked.
+        // getPanoramaByLocation will return the nearest pano when the
+        // given radius is 50 meters or less.
+        map.addListener('click', function(event) {
+            streetView.getPanorama({location: event.latLng, radius: 50}, processSVData);
+        });
+
+        // create a marker for map using an icon img;
+        var marker=new google.maps.Marker({
+            position:myLocation,
+            animation:google.maps.Animation.BOUNCE,
+        });
+        marker.setMap(map);
+        // create an infowindow for map 4
+        var infowindow = new google.maps.InfoWindow({
+            content:"This is a nice property!"
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+
+    }
+
+    function processSVData(data, status) {
+        if (status === google.maps.StreetViewStatus.OK) {
+            var marker = new google.maps.Marker({
+                position: data.location.latLng,
+                map: map,
+                title: data.location.description
+            });
+
+            panorama.setPano(data.location.pano);
+            panorama.setPov({
+                heading: 270,
+                pitch: 0
+            });
+            panorama.setVisible(true);
+
+            marker.addListener('click', function() {
+                var markerPanoID = data.location.pano;
+                // Set the Pano to use the passed panoID.
+                panorama.setPano(markerPanoID);
+                panorama.setPov({
+                    heading: 270,
+                    pitch: 0
+                });
+                panorama.setVisible(true);
+            });
+        } else {
+            console.error('Street View data not found for this location.');
+        }
+    }
+
+</script>
+
+<!--<script>-->
+    <!--$(document).ready(function(){-->
+        <!--$("#showBoundsCoordinates").click(function(){-->
+            <!--$(this).text = map.getBounds();-->
+        <!--});-->
+    <!--});-->
+
+<!--</script>-->
+
+<script
+        src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"
+        async defer>
+</script>
+</body>
+</html>
+
+</body>
+</html>

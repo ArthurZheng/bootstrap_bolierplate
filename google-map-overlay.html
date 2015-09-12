@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Map Overlay</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        var myLocation = new google.maps.LatLng(-37.818266, 144.962388);
+
+        function initialize() {
+            // create an object (mapProp) to define the properties for the map;
+            var mapProp = {
+                center: myLocation,
+                zoom:13,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+            var mapProp2 = {
+//                center: new google.maps.LatLng(51.508742,-0.120850),
+                center: myLocation,
+                zoom:9,
+                mapTypeId: google.maps.MapTypeId.SATELLITE
+            };
+            var mapProp3 = {
+                center: myLocation,
+                zoom:9,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+            var mapProp4 = {
+                center: myLocation,
+                zoom:9,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+            };
+
+            // creates a map object;
+            var map1 = new google.maps.Map(document.getElementById("googleMap1"),mapProp);
+            var map2 = new google.maps.Map(document.getElementById("googleMap2"),mapProp2);
+            var map3 = new google.maps.Map(document.getElementById("googleMap3"),mapProp3);
+            var map4 = new google.maps.Map(document.getElementById("googleMap4"),mapProp4);
+
+
+            // create a map marker object;
+            var marker1=new google.maps.Marker({
+                position: myLocation,
+                animation:google.maps.Animation.BOUNCE
+            });
+            // set the marker on the map;
+            marker1.setMap(map1);
+
+            // create a marker for map2 using an icon img;
+            var marker2=new google.maps.Marker({
+                position:myLocation,
+                animation:google.maps.Animation.BOUNCE,
+                icon:'./assets/img/pin1.png'
+            });
+            marker2.setMap(map2);
+
+            // adding a circle to mycity in map3;
+            var myCity = new google.maps.Circle({
+                center:myLocation,
+                radius:20000,
+                strokeColor:"#0000FF",
+                strokeOpacity:0.8,
+                strokeWeight:2,
+                fillColor:"#0000FF",
+                fillOpacity:0.4
+            });
+            myCity.setMap(map3);
+
+            // create a marker for map4 using an icon img;
+            var marker4=new google.maps.Marker({
+                position:myLocation,
+                animation:google.maps.Animation.BOUNCE,
+                icon:'./assets/img/pin3.png'
+            });
+            marker4.setMap(map4);
+            // create an infowindow for map 4
+            var infowindow = new google.maps.InfoWindow({
+                content:"This is a nice property!"
+            });
+
+            google.maps.event.addListener(marker4, 'click', function() {
+                infowindow.open(map4,marker4);
+            });
+
+        }
+
+        // Add a DOM listener that will execute the initialize() function
+        // on window load (when the page is loaded):
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    
+</head>
+
+<body>
+<div class="container">
+    <h1>Google Map API JavaScript Libarary Examples</h1>
+
+    <!--this is the map container. The map will always "inherit" its size from its container element-->
+    <h1>A Map with an animated bouncing Marker</h1>
+    <div id="googleMap1" style="width:400px;height:300px;"></div>
+    <!--this is the map container. The map will always "inherit" its size from its container element-->
+    <hr>
+    <br>
+    <h1>A Map with an animated bouncing icon image</h1>
+    <div id="googleMap2" style="width:400px;height:300px;"></div>
+    <hr>
+    <br>
+    <h1>A Map with an Circle covering my city</h1>
+    <div id="googleMap3" style="width:400px;height:300px;"></div>
+    <br>
+    <br>
+    <h1>A Map with an Info Window (Click to Open)</h1>
+    <div id="googleMap4" style="width:400px;height:300px;"></div>
+</div>
+</body>
+
+</html>

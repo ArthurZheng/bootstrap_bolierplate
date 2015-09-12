@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Google Map Boiler Plate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        var myLocation = new google.maps.LatLng(-37.818266, 144.962388);
+        var marker;
+
+        function initialize() {
+            // create an object (mapProp) to define the properties for the map;
+            var mapProp = {
+                center: myLocation,
+                zoom:13,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+
+            // creates a map object;
+            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+            // create a map marker object;
+            var marker=new google.maps.Marker({
+                position: myLocation,
+                animation:google.maps.Animation.BOUNCE
+            });
+            // set the marker on the map;
+            marker.setMap(map);
+        }
+
+        // Add a DOM listener that will execute the initialize() function
+        // on window load (when the page is loaded):
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+</head>
+
+<body>
+<div class="container">
+    <h1>Google Map API JavaScript Libarary Examples</h1>
+
+    <!--this is the map container. The map will always "inherit" its size from its container element-->
+    <div id="googleMap" style="width:800px;height:500px;"></div>
+</div>
+</body>
+
+</html>
