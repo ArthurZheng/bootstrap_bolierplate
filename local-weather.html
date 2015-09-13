@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Local Weather</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Free Code Camp Zipline</h1>
+        <h3>Local Weather App</h3>
+        <p>Here's the currently weather:<p>
+        <p id="currently-weather">.......<p>
+        <button onclick="getCurrentlyWeather()">Submit</button>
+
+        <p>Here's the hourly weather:<p>
+        <p id="hourly-weather">.......<p>
+        <button onclick="getHourlyWeather()">Submit</button>
+    </div>
+
+    <div class="container" style="background-color: aquamarine">
+        <p>Click the button to get your coordinates.</p>
+
+        <button onclick="getLocation()">Try It</button>
+
+        <p id="demo"></p>
+    </div>
+
+<script>
+    //https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE
+    function getCurrentlyWeather(){
+    var url = 'https://api.forecast.io/forecast/';
+    var apiKey = '8e0814b19e467ffa6f95a0844cd49d3d';
+    var lati = -37.815206499999995;
+    var longi = 144.963937;
+    var data = "";
+
+    $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
+        console.log(JSON.stringify(data, null, 4));
+        $('#currently-weather').html('The local weather: summary ' + data.currently.summary + " icon " + data.currently.icon + " temperature " + data.currently.temperature +
+                " wind speed " + data.currently.windSpeed + " humidity " + data.currently.humidity + ".");
+    });
+    }
+
+    function getHourlyWeather(){
+    var url = 'https://api.forecast.io/forecast/';
+    var apiKey = '8e0814b19e467ffa6f95a0844cd49d3d';
+    var lati = -37.815206499999995;
+    var longi = 144.963937;
+    var data = "";
+
+    $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
+        console.log(JSON.stringify(data, null, 4));
+
+        $('#hourly-weather').html('The local weather: hourly summary ' + data.hourly.summary + " icon " + data.hourly.icon + ".");
+    });
+    }
+
+    // for getting geolocation;
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";}
+    }
+
+    function showPosition(position) {
+        x.innerHTML="Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+    }
+
+
+</script>
+
+
+</body>
+</html>
+</script>
+</body>
+</html>

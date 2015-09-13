@@ -99,7 +99,8 @@
         var randomId = randomIntFromInterval(0, 12);
         document.getElementById("content").innerHTML =  array1[randomId];
     }
-
+    //show some default quote once the page loads;
+    showQuote();
     var x = document.getElementById("myBtn");
     x.addEventListener("click", showQuote);
 
