@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title>Local Weather & Reverse Geocoding</title>
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+        }
+
+        //Get the latitude and the longitude, create a google map, infoWindow, call the reverse geocoding function geocodeLatLng;
+        function successFunction(position) {
+            var coordinates = {};
+            coordinates.latitude = position.coords.latitude;
+            coordinates.longitude = position.coords.longitude;
+
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            console.log("Latitude is " + lat + " Longitude is " + lng);
+
+            var mapProp = {
+                center:new google.maps.LatLng(lat, lng),
+                zoom:12,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+
+            var infowindow = new google.maps.InfoWindow;
+
+            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+            var geocoder = new google.maps.Geocoder;
+
+            //call geocodeLatLng function, passing in parameters;
+            geocodeLatLng(geocoder, coordinates, map, infowindow);
+
+            // call local weather function;
+            getCurrentlyWeather(lat, lng);
+        }
+
+        function errorFunction(){
+            alert("Geocoder failed");
+        }
+
+        // reverse geocoding;
+        function geocodeLatLng(geocoder, coordinates, map, infowindow) {
+
+            var latlng = {lat: parseFloat(coordinates.latitude), lng: parseFloat(coordinates.longitude)};
+            latlng = latlng;
+            geocoder.geocode({'location': latlng}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        map.setZoom(11);
+                        var marker = new google.maps.Marker({
+                            position: latlng,
+                            map: map
+                        });
+                        infowindow.setContent(results[1].formatted_address);
+                        infowindow.open(map, marker);
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+        } // end reverse geocoding;
+
+        // local weather
+        //https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE
+        function getCurrentlyWeather(lat, lng){
+            var url = 'https://api.forecast.io/forecast/';
+            var apiKey = '8e0814b19e467ffa6f95a0844cd49d3d';
+//            var lati = -37.815206499999995;
+//            var longi = 144.963937;
+
+            var lat = lat;
+            var lng = lng;
+            var data = "";
+
+            $.getJSON(url + apiKey + "/" + lat + "," + lng + "?callback=?", function(data) {
+                console.log(JSON.stringify(data, null, 4));
+                $('#currently-weather').html('The local weather report: today ' + data.currently.summary + "," + data.currently.icon + " temperature is " + data.currently.temperature +
+                        " and wind speed is " + data.currently.windSpeed + ", and humidity is " + data.currently.humidity + ".");
+            });
+        }
+
+    </script>
+
+</head>
+<div class="container">
+    <h1>Local Weather and Reverse Geolocation Google Map</h1>
+    <div id="googleMap" style="width:500px;height:380px;"></div>
+</div>
+
+<div class="container">
+    <h1>Free Code Camp Zipline</h1>
+    <h3>Local Weather App</h3>
+    <p>Here's the currently weather:<p>
+    <p id="currently-weather">.......<p>
+    <button onclick="getCurrentlyWeather()">Submit</button>
+</div>
+
+
+</body>
+</html>
