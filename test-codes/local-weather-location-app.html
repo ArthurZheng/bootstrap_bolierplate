@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Local Weather Location</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--//google map-->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Local Weather and Location App</h1>
+    <div id="googleMap" style="width:500px;height:380px;"></div>
+</div>
+
+
+<script>
+
+//    var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+//
+//    function createMap()
+//    {
+//        var mapProp = {
+//            center:myCenter,
+//            zoom:5,
+//            mapTypeId:google.maps.MapTypeId.ROADMAP
+//        };
+//
+//        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+//
+//        var marker=new google.maps.Marker({
+//            position:myCenter,
+//        });
+//
+//        marker.setMap(map);
+//    }
+//
+//    google.maps.event.addDomListener(window, 'load', createMap());
+
+</script>
+
+<script>
+    $(document).ready(function() {
+
+        getLocation();
+
+        function getLocation() {
+            $.get("http://ipinfo.io", function(location) {
+                console.log("Location details " + location);
+                console.log(location);
+
+                $('.location')
+                        .append(location.city + ", ")
+                        .append(location.country);
+
+                var units = getUnits(location.country);
+
+                // location.loc returns the latitdue and longitude of the current location;
+                getWeather(location.loc, units);
+
+                // call createMap function, pass in the location coordiates;
+                createMap(getLatitudeLongitude(location.loc));
+
+            }, "jsonp");
+
+        }
+        function getLatitudeLongitude(location){
+            var coordinates = {};
+            coordinates.latitude  = location.split(",")[0] //.toString();
+            coordinates.longitude = location.split(",")[1] //.toString();
+
+            console.log("latitude is " + coordinates.latitude);
+            console.log("longitude is " + coordinates.longitude);
+
+            return coordinates;
+        }
+
+
+        function getWeather(loc, units) {
+            var coordinates = getLatitudeLongitude(loc);
+
+//          http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID={APIKEY};
+            var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + coordinates.latitude + '&lon=' + coordinates.longitude
+                    + "&units=" + units;
+
+            console.log("weather url is " + weatherApiUrl);
+
+            $.get(weatherApiUrl, function(weather) {
+                var windDir = convertWindDirection(weather.wind.deg);
+                var temperature = weather.main.temp;
+                var unitLabel;
+
+                //label based in imperial vs metric units
+                if (units === "imperial") {
+                    unitLabel = "F";
+                } else {
+                    unitLabel = "C";
+                }
+
+                temperature = parseFloat((temperature).toFixed(1));
+
+                console.log(weather);
+
+                $('#icon')
+                        .append("<img src='http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png'>");
+
+                $('#temp').append(temperature + " " + unitLabel);
+                $('#conditions').append(weather.weather[0].description);
+                $('#wind').append(windDir + " " + weather.wind.speed + " knots");
+                $('#postal').append(weather.main.humidity);
+            }, "jsonp");
+
+        };
+
+        function convertWindDirection(dir) {
+            var rose = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+            var eightPoint = Math.floor(dir / 45);
+            return rose[eightPoint];
+        }
+
+        function getUnits(country) {
+            var units = '';
+            var imperialCountries = ['US', 'BS', 'BZ', 'KY', 'PW'];
+
+            if (imperialCountries.indexOf(country) === -1) {
+                units = 'metric';
+            } else {
+                units = 'imperial';
+            }
+
+            console.log("Country " + country + "Unit is " + units);
+            return units;
+        }
+
+
+
+        function createMap(coordinates)
+        {
+//            var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+            var myCenter=new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
+
+            var mapProp = {
+                center:myCenter,
+                zoom:9,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+
+            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+            var marker=new google.maps.Marker({
+                position:myCenter,
+            });
+
+            marker.setMap(map);
+        }
+
+        google.maps.event.addDomListener(window, 'load', createMap());
+
+
+    });
+
+</script>
+</body>
+</html>

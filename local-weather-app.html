@@ -9,171 +9,134 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+    <!--//google map-->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
     <style>
-
-        html{
-            font-size: 18px;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background: url("http://static.pexels.com/wp-content/uploads/2014/06/clouds-colorful-colourful-1029.jpg") no-repeat;
-            background-size: cover;
-        }
-
         body {
-            font-family: 'Lato', sans-serif;
-            text-align: center;
-            font-size: 1em;
-        }
-
-        #title{
-            font-size: 1.8em;
-            padding: 1%;
-            color: #BFAD61;
-            text-shadow: 0 0 0.3em #000;
-        }
-
-        #subtitle{
-            font-size: 1.5em;
-            margin-bottom: 3%;
-            color: #BFAD61;
-            text-shadow: 0 0 0.3em #000;
-        }
-
-
-        #loadingGif {
-            display: block;
-            margin:0 auto;
-            height: 32px;
-            width: 32px;
-            background-image: url("http://i.imgur.com/g6fBUAd.gif");
-        }
-
-
-        #icon, #temp{
-            display: inline-block;
-        }
-
-        img{
-            vertical-align: middle;
-        }
-
-        #icon{
-            position: relative;
-            bottom: 5px;
-        }
-
-        #temp{
-            font-size: 1.8em;
-            font-weight: bold;
-            padding-bottom: 1%;
-            color: #ffffff;
-            text-shadow: 0 0 0.2em #333;
-        }
-
-        .location, #conditions, #wind{
-            display: inline-block;
-        }
-
-        .details{
-            border: 2px solid #ffffff;
-            color: #7F3320;
-            padding: 2% 1% 2% 1%;
-            margin: 0 auto 0.7% auto;
-            background-color: #ffffff;
-            border-radius: 0.3em;
-            box-shadow: .2em .2em .2em #444;
-            opacity: 0.7;
-        }
-
-        #postal {
-            font-size: 1.8em;
-            font-weight: bold;
-            padding-top: 3%;
-            color: #ffffff;
-            text-shadow: 0 0 0.2em #333;
-        }
-
-        button{
-            margin-top: 3%;
-            font-size: 1.15em;
-            border: 0.1em solid #ffffff;
-            border-radius: 0.2em;
-            background-color: #7F3320;
-            color: #ffffff;
-            padding: 0.5%;
+            background-size: cover;
+            background-attachment: fixed;
+            font-size: 24px;
+            color: coral;
         }
 
     </style>
 </head>
 <body>
-<!--FreeCodeCamp.com Zipline task demo of a local weather app.
-It uses two api queries to gather local information, and display the local weather conditions.
-Code by Suzanne Atkinson(@adventurebear), styling by Julie Myers (@blueoceanview) on freecode.slack.com
-
-Other resources:
-Country Codes for imperial vs. metric check:
-http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes
-
-List of countries that use fahrenheight:
-http://en.wikipedia.org/wiki/Fahrenheit
--->
-
-
-<div id="title">Free Code Camp Zipline</div>
-<div id="subtitle">Local Weather App</div>
-
-<!--<div id="loadingGif"></div>-->
-
-<div id="iconTemp">
-    <div id="icon"></div>
-    <div id="temp"></div>
+<div class="conatiner">
+    <div class="row">
+        <h1 class="text-center">Free Code Camp Zipline</h1>
+        <h2 class="text-center">Location and Local Weather App</h2>
+        <div class="col-sm-3 col-sm-offset-3">
+            <div id="googleMap" style="width:350px;height:300px;"></div>
+        </div>
+        <div class="col-sm-3">
+            <div id="icon"></div>
+            <div id="temp"></div>
+            <div id="conditions" class="details"></div>
+            <div id="wind" class="details"></div>
+            <div id="humidity"></div>
+            <div class="location"></div>
+            <div id="date"></div>
+        </div>
+    </div>
 </div>
-
-<div id="weatherWrapper">
-    <div class="location details"></div>
-    <div id="conditions" class="details"></div>
-    <div id="wind" class="details"></div>
-    <div id="postal"></div>
-</div>
-
-<!--<button>Convert Units</button>-->
 
 <script>
     $(document).ready(function() {
 
         getLocation();
 
+//        sample code from ipinfo.io
+//
+//        $.get("http://ipinfo.io", function(response) {
+//            console.log(response.ip, response.country);
+//        }, "jsonp");
+//
+
+
+        var date = new Date();
+        console.log("Date is " + date);
+        $("#date").text("Date: " + date.toDateString());
+
+
         function getLocation() {
             $.get("http://ipinfo.io", function(location) {
+                console.log("Location details below");
                 console.log(location);
 
-                $('.location')
-                        .append(location.city + ", ")
-                        .append(location.region);
+                var city = " ";
+                if(location.city === null){
+                    city = "Middle of Nowhere";
+                }else {
+                    city = location.city;
+                }
 
+                $('.location')
+                        .append("City: " + city)
+                        .append("<br>Country: " + location.country)
+
+                // a helper function to return imperial or metric units for a particular country;
                 var units = getUnits(location.country);
+
+                // location.loc returns the latitdue and longitude of the current location;
                 getWeather(location.loc, units);
 
-                //return weather;
+
+                // call createMap function, pass in the location coordiates;
+                createMap(getLatitudeLongitude(location.loc));
+
 
             }, "jsonp");
 
         }
 
         function getWeather(loc, units) {
-            lat = loc.split(",")[0] //.toString();
-            lon = loc.split(",")[1] //.toString();
 
-            var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + "&units=" + units;
+            var coordinates = getLatitudeLongitude(loc);
 
-            console.log(weatherApiUrl);
+//          http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID={APIKEY};
+            var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + coordinates.latitude + '&lon=' + coordinates.longitude
+                    + "&units=" + units;
+
+            console.log("weather url is " + weatherApiUrl);
 
             $.get(weatherApiUrl, function(weather) {
                 var windDir = convertWindDirection(weather.wind.deg);
                 var temperature = weather.main.temp;
                 var unitLabel;
+                var weatherMain = "";
+
+                weatherMain = weather.weather[0].main;
+                weatherMain = weatherMain.toLowerCase();
+//                weatherMain = "snow";
+                // a switch changes the background color dynamically depending on the weather;
+                switch (weatherMain) {
+                    case "rain":
+                        $("body").css("background", "url(http://i.imgur.com/mVbmFQp.jpg) no-repeat" );
+                        console.log("Switch says its Rainy;")
+                        break;
+                    case "clouds":
+                        $("body").css("background", "url(http://i.imgur.com/VXdp8cC.jpg) no-repeat" );
+                        console.log("Switch says its Cloudy;")
+                        break;
+                    case "clear" :
+                        console.log("Switch says its Clear;")
+                        $("body").css("background", "url(http://i.imgur.com/xaKqWVp.jpg) no-repeat" );
+                        break;
+                    case "snow":
+                        $("body").css("background", "url(http://i.imgur.com/r9svZIz.png) no-repeat" );
+                        console.log("Switch says its Snowy;")
+                        break;
+                    case "extreme":
+                        $("body").css("background", "url(http://i.imgur.com/NQlooOB.jpg) no-repeat" );
+                        console.log("Switch says its Extreme;")
+                        break;
+                    default:
+                        $("body").css("background", "url(http://i.imgur.com/VXdp8cC.jpg) no-repeat" );
+                        console.log("Switch says its DEFAULT;")
+                        break;
+                }
 
                 //label based in imperial vs metric units
                 if (units === "imperial") {
@@ -187,13 +150,12 @@ http://en.wikipedia.org/wiki/Fahrenheit
                 console.log(weather);
 
                 $('#icon')
-                        .append("<img src='http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png'>");
+                        .append("Weather Like " + "<img src='http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png'>");
 
-                $('#temp').append(temperature + " " + unitLabel);
-                $('#conditions').append(weather.weather[0].description);
-                $('#wind').append(windDir + " " + weather.wind.speed + " knots");
-                $('#postal').append(postal);
-
+                $('#temp').append("Temperature: " + temperature + " " + unitLabel);
+                $('#conditions').append("Summary: " + weather.weather[0].description);
+                $('#wind').append("Wind: " + windDir + " " + weather.wind.speed + " knots");
+                $('#humidity').append("Humidity " + weather.main.humidity);
             }, "jsonp");
 
         };
@@ -204,18 +166,62 @@ http://en.wikipedia.org/wiki/Fahrenheit
             return rose[eightPoint];
         }
 
+        // a helper function to return imperial or metric units for a particular country;
         function getUnits(country) {
+            var units = '';
             var imperialCountries = ['US', 'BS', 'BZ', 'KY', 'PW'];
 
             if (imperialCountries.indexOf(country) === -1) {
-                var units = 'metric';
+                units = 'metric';
             } else {
                 units = 'imperial';
             }
 
-            console.log(country, units);
+            console.log("Country " + country + "Unit is " + units);
             return units;
         }
+
+        function getLatitudeLongitude(location){
+            var coordinates = {};
+            coordinates.latitude  = location.split(",")[0] //.toString();
+            coordinates.longitude = location.split(",")[1] //.toString();
+
+            console.log("latitude is " + coordinates.latitude);
+            console.log("longitude is " + coordinates.longitude);
+
+            return coordinates;
+        }
+
+
+        function createMap(coordinates)
+        {
+//            var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+            var myCenter=new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
+
+            var mapProp = {
+                center:myCenter,
+                zoom:5,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+
+            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+            // set up marker;
+            var marker=new google.maps.Marker({
+                position:myCenter,
+            });
+            marker.setMap(map);
+
+            // set up infowindow;
+            var infowindow = new google.maps.InfoWindow({
+                content:"You are here"
+            });
+
+            infowindow.open(map,marker);
+
+    }
+
+        google.maps.event.addDomListener(window, 'load', createMap());
 
     });
 
