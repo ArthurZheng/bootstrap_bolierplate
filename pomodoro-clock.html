@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--jQuery CDN;-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--Google Map API;-->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+    <!--Fontawesome CDN:-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!--Google Fonts CDN;-->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+
+
+    <style>
+        body{
+            background-color: #333333;
+            height: 100%;
+            color: #fff;
+        }
+
+        div.pomodoro {
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            border: 1.5px solid lawngreen;
+            width: 200px;
+            height: 200px;
+        }
+        h1 {
+            padding-top: 20px;
+            display: block;
+            margin: 0 auto;
+            font-family: 'Tangerine', serif;
+            font-size: 6em;
+            font-weight: bold;
+        }
+        h3 {
+            padding-top:10px;
+            margin: 0 auto;
+            font-size: 32px;
+        }
+
+        div.time-now {
+            padding-top: 20px;
+            background-color: transparent;
+            color: black;
+            font-size: 28px;
+            text-align: center;;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Free Code Camp Zipline</h1>
+    <h3 class="text-center">Pomodoro Clock</h3>
+    <div class="row"></div>
+        <div class="time-now col-sm-4 col-sm-offset-4">
+            <div class="well">
+                <p>Current Time: <span id="current-time"></span></p>
+            </div>
+        </div>
+    <div class="pomodoro">
+        <p>I am Pomodoro Clock</p>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function(){
+        console.log("I AM READY");
+        console.log("Testing Javascript Closure");
+
+        // javascript closure demo;
+        var add = (function(){
+            var counter = 0;
+            return function(){
+                return counter += 1;
+            }
+        })();
+        console.log(add());
+        console.log(add());
+        console.log(add());
+
+        // javascript closure taking 1 parameter;
+        var addNumber = (function(number){
+            var counter = 0;
+            return function(number){
+                return counter += number;
+            }
+        })();
+
+        console.log(addNumber(5));
+        console.log(addNumber(8));
+        console.log(addNumber(10));
+
+//      show current time;
+        function startTime() {
+            var today = new Date();
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var seconds = today.getSeconds();
+
+            hour = checkTime(hour);
+            minute = checkTime(minute);
+            seconds = checkTime(seconds);
+
+            var timeString = hour + ":" + minute + ":" + seconds;
+            console.log("Current Time: " + timeString);
+
+            $("#current-time").text(timeString);
+//            a recursion to call the stratTime after every 0.5 seconds;
+//            setTimeOut only excuted once to call a function;
+            var time = setTimeout(function(){startTime()}, 500);
+        }
+
+//      helper function to add preleading 0 to time;
+        function checkTime(time) {
+            if (time <10) { time = "0" + time };  // add zero in front of numbers < 10
+            return time;
+        }
+
+        // call startTime function to initialize the clock;
+        startTime();
+
+    });
+</script>
+</body>
+</html>

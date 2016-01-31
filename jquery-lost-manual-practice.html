@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--jQuery CDN;-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!--Google Map API;-->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+    <!-- jQuery UI -->
+    <script src="./assets/js/jquery-ui.min.js"></script>
+
+    <!--Fontawesome CDN:-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <style>
+        /* Sticky footer styles
+        -------------------------------------------------- */
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            /* Margin bottom by footer height */
+            /*margin-bottom: 60px;*/
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            background-color: #f5f5f5;
+        }
+        /* vertical align anything; */
+        .footer-container {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .footer-container p {
+            margin-bottom: auto;
+        }
+
+        .dashboard {
+            margin-top: 50px;
+            position: absolute;
+            left: -290px;
+            max-width: 18%;
+            height: auto;
+            z-index: 100;
+            padding-bottom: 15px;
+        }
+        .dashboard p {
+            text-align: center;
+        }
+        .dashboard img {
+            border: 1px solid white;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container dashboard bg-primary">
+    <h3 class="text-center"> &yen; Image Dashboard</h3>
+    <p>
+        <img class="img-rounded" src="./assets/img/rabit.jpg" alt="image placeholder"/>
+    </p>
+    <p>
+        <img class="img-circle" src="./assets/img/rino.jpeg" alt="image placeholder"/>
+    </p>
+    <p>
+        <img class="img-thumbnail" src="./assets/img/zebra.jpg" alt="image placeholder"/>
+    </p>
+    <p>
+        <img class="img-circle" src="./assets/img/koala.jpg" alt="image placeholder"/>
+    </p>
+    <p>
+        <img class="img-rounded" src="./assets/img/leopard.jpg" alt="image placeholder"/>
+    </p>
+</div>
+
+
+<div class="container bg-warning">
+    <h1 class="text-danger">&pound; To Do List Demo</h1>
+    <h2>Jun's TO-DO List</h2>
+    <div class="row">
+        <input class=" col-sm-10 input input-lg input-list" type="text" />
+        <div class="col-sm-2">
+            <button class="btn btn-lg btn-success submit-to-do" type="submit">Submit</button>
+        </div>
+    </div>
+    <br /><hr />
+
+    <ul class="list-group to-do-list">
+
+    </ul>
+
+</div>
+<br />
+<div class="container bg-success">
+    <h1 class="text-primary">&euro; Click Hide and Show Demo</h1>
+    <h3 class="question"><span class="glyphicon glyphicon-plus"></span>&nbsp; How long does it take to get a passport?</h3>
+    <p class="answer">
+        Whether you apply in Australia or overseas, you should allow approximately three weeks to get a new passport.
+        If you need to travel urgently, you can request priority service (an additional fee is payable).
+        This will ensure we issue your passport within two working days of receiving everything we need from you.
+    </p>
+
+    <h3 class="question"><span class="glyphicon glyphicon-plus"></span> &nbsp; Can I lodge my application form online?</h3>
+    <p class="answer">Passport application forms can be filled in online and printed, but not lodged.
+        You will need to sign the completed application form in black ink and lodge it in person, together with all the needed supporting documentation.
+        In Australia most forms are lodged at Australia Post outlets. Clients who can demonstrate an urgent need to travel can call APIS on 131 232 to make an appointment to lodge at an Australian Passport Office.
+        Overseas applicants should contact the nearest Australian diplomatic or consular mission to obtain details for lodgement.</p>
+
+    <h3 class="question"><span class="glyphicon glyphicon-plus"></span>&nbsp; Why can’t I use the renewal form?</h3>
+    <p class="answer">If you cannot access the passport renewal form online, you may not be eligible to renew. See Renewing your passport for more information.
+        Alternatively, you may be answering the security questions incorrectly. The answers to these questions must match exactly the information we hold on your passports records. If you believe you are eligible to renew but are unable to access or complete the renewal form online,
+        call the Australian Passport Information Service (APIS) on 131 232 or, if you are overseas, contact the nearest Australian diplomatic mission or consulate.</p>
+</div>
+<hr />
+
+<div class="container bg-info">
+    <h1 class="text-warning">&yen; Click Hide and Show Login Form Demo</h1><br /><br />
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8 bg-primary">
+            <p class="lead">click on button below to show/hide login form</p>
+            <button class="btn btn-lg btn-block btn-warning login-btn">Log In</button>
+        </div>
+
+        <div class="col-sm-offset-2 col-sm-8 bg-primary">
+            <form class="login-form" role="form">
+                <div class="form-group">
+                    <br />
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form><br />
+        </div>
+    </div><br />
+</div>
+
+<div class="container bg-danger">
+    <h1>&copy; Select to Hide and Show Input Demo</h1>
+    <h2>Form control: select</h2>
+    <p>The form below contains two dropdown menus (select lists):</p>
+    <form role="form">
+        <div class="form-group">
+            <label for="sel1">Select list (select one):</label>
+            <select name="select-user" class="form-control" id="sel1">
+                <option>Select a User</option>
+                <option>Jun Zheng</option>
+                <option>Jiangli Shi</option>
+                <option>Sen Zheng</option>
+                <option>Shude Zheng</option>
+            </select>
+        </div>
+        <div class="form-group dance-school">
+            <label for="dance-shcool">Type in Your Dance School Below</label>
+            <input type="text" class="form-control dance-school-input" name="dance-school" id="dance-shcool"/>
+        </div>
+    </form>
+
+    <form role="form">
+        <h3>This is an example of a Multiple Selection Form. <br />The difference is that it has keyword: multiple inside the select bracket.</h3>
+        <label for="sel2">Mutiple select list (hold shift to select more than one):</label>
+        <select multiple class="form-control" id="sel2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </form><br>
+</div>
+
+<div class="container bg-primary">
+    <h1>&reg; Check Box to Disable/Enable Submit Btn Demo</h1>
+    <h2>Horizontal form</h2>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email2">Email:</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email2" placeholder="Enter email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd2">Password:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="pwd2" placeholder="Enter password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox" name="check-terms">I have read the Terms and Conditions and I agree with it.</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <a href="#" class="btn btn-info anchor-submit-btn" role="button">Link Submit Button</a>
+                <button type="submit" class="btn btn-default btn-submit-btn">Button Submit Btn</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br /><hr />
+
+<div class="container bg-success">
+    <h2>&copy; Check Box to Hide/Show Input Field and Enable/Disable Submit Btn Demo</h2>
+    <h2>Horizontal Form Age Checkbox and Age Input</h2>
+    <hr />
+    <form class="form-horizontal bg-info" role="form">
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox" name="age-checkbox">Provide My Age for Application Form</label>
+                </div>
+            </div>
+        </div>
+        <div class="age-checkbox form-group">
+            <label class="control-label col-sm-2" for="age">Your Age:</label>
+            <div class="col-sm-10">
+                <input type="number" name="age" id="age" class="form-control" max="100" min="0"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <a href="#" class="btn btn-info link-submit-btn" role="button">Link Submit Age Button</a>
+                <button type="submit" class="btn btn-default submit-btn">Button Submit Age Btn</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br /><hr />
+
+<div class="container bg-warning">
+    <h3 class="">Demonstrating jQuery Annimate Effects</h3>
+    <button style="position:relative" class="btn btn-lg btn-primary animate-effect">Click Me for Linear Animation</button>
+    <br /><br />
+    <button style="position:relative" class="btn btn-lg btn-info animate-effect2">Click Me for Animation</button>
+</div>
+<br /><hr />
+
+<div class="container bg-danger">
+    <h1>&pound; jQuery Animate with Callback Demo</h1>
+    <br /><hr />
+
+    <button type="button" name='animate-image-btn' class="btn btn-lg btn-warning center-block">Click to Show Image</button><br />
+    <div class="container animate-image-container">
+        <img style="position: relative" id="animate-image" src="./assets/img/kangaroo.jpg"/>
+    </div>
+    <h3 style="position: relative" class="image-caption">A kangroo's pouch has a Hippo in it!!!!</h3>
+
+    <button type="button" name='animate-image-btn2' class="btn btn-lg btn-primary center-block">Click to Show Image with Delay</button><br />
+     <div class="container animate-image-container2">
+        <img id="animate-image2" src="./assets/img/nature-bk-8.jpg"/>
+    </div>
+
+    <br /><br />
+
+</div>
+
+
+<br/><hr /><br/>
+
+<footer class="footer">
+    <div class="container footer-container">
+        <p class="text-muted text-center">Techtransformers &reg; IT Solutions &copy; 2016. All rights reserved!</p>
+    </div>
+</footer>
+
+
+<script>
+    $(document).ready(function(){
+
+/* 1. code for to do list demo; */
+        $('.submit-to-do').on('click', function(){
+            var new_list = $('.input-list').val();
+            $('.input-list').val('');
+
+            $('.to-do-list').append('<li class="list-group-item list-group-item-success">' + new_list + '</li>');
+        }); // end on click submit button;
+        $('.to-do-list').on('click', 'li', function(){
+            $(this).css('text-decoration', 'line-through').removeClass('list-group-item-success').addClass('list-group-item-danger');
+        }); // end on click;
+        $('.to-do-list').on('dblclick', 'li', function(){
+            $(this).css('text-decoration', 'underline').removeClass('list-group-item-danger').addClass('list-group-item-info');
+        }); // end on dblclick;
+
+
+/* 2.  code for click hide and show demo */
+        $('.answer').hide();
+        $('.question').on('click', function () {
+            $(this).next('.answer').slideToggle();
+            $(this).find('span.glyphicon').toggleClass('glyphicon-minus');
+            $(this).find('span.glyphicon').toggleClass('glyphicon-plus');
+        });
+
+/* 3. code for hide and show Login Form Demo; */
+        $('.login-form').hide();
+        $('.login-btn').on('click', function(){
+//            $('.login-form').toggle('slow');
+//            $('.login-form').slideToggle('slow');
+//            $('.login-form').fadeToggle('slow');
+            $('.login-form').fadeToggle(1500, function(){
+                alert('log in form toggled.');
+            });
+        }); // end on click login-btn;
+
+
+/* 4. code for select user to show input and hide the input box when user finishes typing in */
+        $('.dance-school').hide();
+        $("select[name='select-user']").change(function(){
+            $('.dance-school').slideDown(800);
+
+            $(this).css('background-color', "#D6D6FF");
+            var selected_user = $(this).val();
+            console.log('selected user is ');
+            console.log(selected_user);
+        }); // end select-user select box change;
+//        $('.dance-school').change(function (evt) {
+        $('.dance-school').on('change', function (evt) {
+            evt.preventDefault();
+            $(this).css({'border': '2px solid yellow', 'background-color': "#D6D6FF"});
+            $(this).slideUp(1000);
+            console.log('dance school is');
+            console.log($(this).val());
+            var input_value = $('input[name="dance-school"]').val();
+            console.log('using input[name=dance-school] find its value:');
+            console.log(input_value);
+        }); // end dance-school input box change;
+
+
+/* 5. code for click checkbox to enable submit btn */
+        // to disable btn, use prop('disabled', true);
+        $('button[type="submit"]').prop('disabled', true);
+           // to disable anchor use attr('disable', true);
+        $('.anchor-submit-btn').attr('disabled', true);
+        // check if the checkbox is checked or not, then disable/enable the submit btn accordingly;
+        $(':checkbox[name="check-terms"]').change(function(){
+            if ($(this).prop('checked')){
+                alert('checkbox is now checked;');
+                $('.btn-submit-btn').prop('disabled', false);
+                $('.anchor-submit-btn').attr('disabled', false);
+            } else {
+              alert('checkbox is unchecked. Now we disable the anchor/btn submit btn;');
+                $('.btn-submit-btn').prop('disabled', true);
+                $('.anchor-submit-btn').attr('disabled', true);
+            };
+        });
+
+        $('a[href="#"]').on('click', function (evt) {
+            alert('link button clicked');
+        }); // end anchor click button click;
+
+
+/* 6. code for checkbox to hide and show age form */
+
+        // first, let's disabled the link btn and button submit btn;
+        $('.link-submit-btn').attr('disabled', true);
+        $('.submit-btn').prop('disabled', true);
+
+        //we also hide the age input field;
+//        $('input[name="age"]').hide();
+        $('.age-checkbox').hide();
+
+        // then we check if the checkbox is check;
+        $(':checkbox[name="age-checkbox"]').change(function(){
+            var checkedStatus = $(this).prop('checked'); // we could just use $(this).checked instead;
+            console.log('age checkbox is checked:'), checkedStatus;
+
+            /* this slideToggle is very clever, it toggles base on checkbox checked True or False
+               Note: it's better than the normal if checkbox checked, slideDown, else slideUp;
+             */
+//            $('input[name="age"]').slideToggle(checkedStatus);
+//            $('.age-checkbox').slideToggle(checkedStatus); // or even better use this;
+            $('.age-checkbox').slideToggle($(this).checked); // or even better use this;
+
+
+            // if the age checkbox is checked, we enabled the submit btns;
+            if (checkedStatus){
+                $('.link-submit-btn').attr('disabled', false);
+                $('.submit-btn').prop('disabled', false);
+            } else {
+                // if they are unchecked, we disable the submit btns again;
+                $('.link-submit-btn').attr('disabled', true);
+                $('.submit-btn').prop('disabled', true);
+            }
+
+        }); // end age checkbox change;
+
+
+/* 7. code for jQuery annimate effect dmeo; */
+        $('.animate-effect').on('click', function(){
+            $(this).animate(
+                {left: '250px', fontSize: '44px', opacity:.4, width: '900px', height: '350px'},
+                1500,
+                'linear'
+            );
+        });
+        $('.animate-effect2').click(function(){
+           $(this).animate(
+               {
+                   left: '300px',
+                   fontSize: '33px',
+                   opacity: 0.5,
+                   width: '750px',
+                   height: '300px'
+               },
+               2500,
+               'swing'
+           );
+        });
+
+/* 8. code for animation and callback demo; */
+//        $('.image-caption').hide();
+        $('.animate-image-container, .image-caption').hide();
+        $('#animate-image').width(0).height(0);
+
+        $('button[name="animate-image-btn"]').on('click',function(){
+            console.log('animate-image-btn clicked');
+
+            $('.animate-image-container').slideDown(400);
+            $('#animate-image').animate(
+                {
+                    width: '550px',
+                    height: '310px',
+                    left: '+=300px'
+                },
+                2800,
+                'linear',
+                function () {
+                    $('.image-caption').fadeIn(
+                    500,
+                    function(){
+                        $('.animate-image-container, .image-caption').fadeOut(5500)
+                    });
+                }
+            );
+        }); // end animate-image-btn on click;
+
+        $('#animate-image2').hide();
+        $('button[name="animate-image-btn2"]').on('click', function(){
+             $('#animate-image2').fadeIn(1800).delay(5000).fadeOut(500).delay(1000)
+                     .slideDown(1200).delay(1200).fadeOut(800).delay(1000).fadeIn(3000);
+        });
+
+    });
+
+
+/* 9. code for image dashboard animation */
+    $('.dashboard').hover(
+        function(){
+            // The .stop() function here simply ends any animations on the div before start- ing a new one,
+            // and prevents multiple animations from building up in the queue.
+            $(this).stop().animate(
+                {
+                    left: 0,
+                    backgroundColor: 'rgb(27,45,94)'
+                },
+                1500,
+                'linear'
+            );
+        }, // end annoymous function 1;
+        function(){
+            // The .stop() function here simply ends any animations on the div before start- ing a new one,
+            // and prevents multiple animations from building up in the queue.
+            $(this).stop().animate(
+                {
+                    left: '-290px',
+                    backgroundColor: 'rgb(255,211,224)'
+                },
+                1500,
+                'linear'
+            );
+        } // end annoymous function 2;
+    ); // end dashboard on click;
+</script>
+</body>
+</html>

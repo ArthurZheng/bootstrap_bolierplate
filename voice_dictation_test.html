@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--jQuery CDN;-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--Google Map API;-->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+    <!--Fontawesome CDN:-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!--mousetrap library for linking keyboard shortcut-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+
+    <style>
+        #greetings{
+            width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; // This is where the magic happens
+        }
+        .agent-name {
+            width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; // This is where the magic happens
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Testing HTML5 Input Validation</h1>
+    <div class="row">
+        <div class="col-md-10">
+            <form action="">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control input-lg" id="usr" name="firstname" maxlength="5">
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-lg">Microphone</button>
+                    </div>
+                </div>
+            </form>
+            <h1>Another Form</h1>
+            <form action="http://www.example.com/search">
+                <input type="search" id="q" name="q" size=60>
+                <input type="button" value="Click to Speak" onclick="recognition.start()">
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        console.log("I am ready");
+        $('.close-btn').on('click', function(){
+            $('.shut').hide();
+        });
+
+//        var recognizer = new webkitSpeechRecognition();
+//        recognizer.lang = "en";
+//        recognizer.onresult = function(event) {
+//            if (event.results.length > 0) {
+//                var result = event.results[event.results.length-1];
+//                if(result.isFinal) {
+//                    console.log(result[0].transcript);
+//                }
+//            }
+//        };
+//        recognizer.start();
+
+        var recognition = new SpeechRecognition();
+        recognition.onresult = function(event) {
+            if (event.results.length > 0) {
+                q.value = event.results[0][0].transcript;
+                q.form.submit();
+            }
+        }
+</script>
+
+
+
+
+});
+
+</script>
+</body>
+</html>

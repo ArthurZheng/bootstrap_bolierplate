@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--jQuery CDN;-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--Google Map API;-->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+    <!--Fontawesome CDN:-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <style>
+        #greetings{
+            width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; // This is where the magic happens
+        }
+        .agent-name {
+            width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; // This is where the magic happens
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Testing HTML5 Input Validation</h1>
+    <div class="row">
+        <div class="col-md-10">
+            <form action="" class="bg-success">
+                <div class="form-group">
+                    <label for="usr">Name:</label>
+                    <input type="text" class="form-control" id="usr" name="firstname" maxlength="5">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="enquiry-message">Enquiry Message:</label>
+                    <textarea class="form-control" rows="5" id="enquiry-message" minlength="5"></textarea>
+                </div>
+                <button type="submit" value="submit" class="btn btn-lg btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="greetings">
+    Hello universe! tyr to see if it works for me
+</div>
+
+<div class="container shut">
+    <div id="dialog1">Your non-modal dialog</div>
+    <a href="#" id="open">Open dialog</a>
+    <button class="btn btn-block btn-success close-btn">Close Button</button>
+</div>
+
+<h1><a href="http://www.openstreetmap.org/copyright">OpenStreetMap Link</a></h1>
+
+
+Painless JavaScript testing? Surely you Jest!
+Posted on October 30, 2015 by Milly Rowett
+0 Comments
+title-card
+
+Hark! What is this Jest you speak of?
+
+Jest is an open source JavaScript testing framework built on top of Jasmine, developed by Facebook. Try saying that 10 times fast.
+
+Think of it as several layers of improvement stuck on top of Jasmine. Some of the neat features Jest provides are:
+
+Automatically finds tests to run in your project
+Has in built support for fake DOM APIs, such as jsdom, that you can run from the command line
+You can test asynchronous code more easily using inbuilt mocked timer functions
+Tests are run in parallel so they go faster! Vroom vroom.
+But the big drawcard is Jest’s automatic mocking of CommonJS dependencies using the require() function. Instead of specifying all the dependencies you want mocked, you do the opposite. For the subject under test, you just use jest.dontMock().
+
+Easy peasy, right? Come with me dear reader, as I spin you a yarn… Two JavaScript test frameworks walk into a bar… Continue reading →
+
+Posted in Engineering   | Tagged Javascript, software, testing  | 0 Comments
+Playing with Flux
+Posted on July 3, 2015 by Steven Bearzatto
+0 Comments
+Co-authored: Daniel Stankevich
+
+TL;DR: React is better if you use Flux…
+
+Our Journey with React
+
+Having recently decided to embrace React.js for some of our front end applications we soon reached the limitations of simply wiring components together. When you start with a simple React application you will create many components. At some point a change in one of these components will need to update another component. eg. If you change a Price text field, you need to change the page title to reflect that. Continue reading →
+
+Posted in Engineering, General  | Tagged Flux, Javascript, React    | 0 Comments
+Loading Google Maps with RequireJS
+Posted on October 15, 2012 by Eric Entzel
+4 Comments
+Recently at REA, we’ve started to use RequireJS on a few projects to help modularize our Javascript. I came across a fairly subtle issue when trying to use the Google Maps JS API with RequireJS which I thought was interesting.
+
+Here’s our situation:
+
+We want to load google maps and let our code treat it as an AMD module.
+We have several third-party libraries that depend on Google Maps and aren’t AMD modules; we of course want to treat them as AMD modules so we’ve shimmed them.
+We want to use r.js to build a single JS file for production.
+Because Google Maps loads asynchronously, we can’t simply shim it. Miller Medeiros’ async plugin seems to be a common (and good) solution to this problem. His blog post describes the technique, but it doesn’t mention a couple of potential gotchas to do with shimmed modules and single-file optimized builds.
+
+With the async plugin, Google Maps is a “real” AMD module from RequireJS’ perspective. As explained in the RequireJS docs, shimmed modules can’t depend on real modules, because RequireJS has no way ensure in the built file that the shimmed module executes after the real modules it depends on.
+
+This implies that in the built version of the code, we’ll need to load the Google Maps API separately, before all our RequireJS modules (what the RequireJS docs refer to as “CDN loading”). But we’ll also need a way to load Google Maps via the async plugin, only in the non-built environment (otherwise we’d get two copies of Google Maps after the build).
+
+So our complete solution consists of a gmaps.js containing:
+
+1
+2
+3
+define(['async!http://maps.google.com/maps/api/js?v=3&sensor=false&client=gme-nsp&channel=new-homes-app'], function () {
+return google.maps;
+});
+as in the blog post, but for the built version of the code, we created a gmaps-stub.js containing:
+
+1
+2
+3
+define(function () {
+    return google.maps;
+});
+and in our build config, loaded the stub instead:
+
+1
+2
+3
+paths: {
+    gmaps: 'gmaps-stub'
+}
+This lets us meet all three of the above requirements.
+
+Posted in Engineering   | Tagged Javascript, requirejs  | 4 Comments
+
+
+
+http://www.trulia.com/
+http://www.zillow.com/homes/5th-ave-new-york_rb/
+
+
+It's really easy to do: object["variablename"] = whatever;
+
+So for example you could have an object: var Landmarks = {} and you could add to it like so: Landmarks["landmark" + i] = new google.maps.Icon(); and pass it that way.
+
+
+How to get the bounding coordinates for a US postal(zip) code?
+
+
+<script>
+    $(document).ready(function(){
+        console.log("I am ready");
+        $('.close-btn').on('click', function(){
+            $('.shut').hide();
+        });
+
+    });
+
+</script>
+</body>
+</html>

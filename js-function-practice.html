@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--jQuery CDN;-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--Google Map API;-->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+    <!--Fontawesome CDN:-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+
+
+<script>
+    $(document).ready(function(){
+        console.log("I am ready");
+
+//        var Train = function(){
+//            this.color = "red";
+//            var speed = 1;
+//
+//            function increaseSpeed(speedo){
+//                return speed + speedo;
+//            }
+//            this.getSpeed = function(){
+//                return increaseSpeed(899);
+//            };
+//        };
+//
+//        var myTrain = new Train();
+//        console.log("My train's speed is " + myTrain.getSpeed());
+//        console.log("My train's color is " + myTrain.color);
+//        console.log("My train's speed is ?? " + myTrain.speed + " . | because speed is private");
+////        console.log("My train increase speed " + myTrain.increaseSpeed(200) + " . | because increaseSpeed() is private");
+//        if(myTrain.hasOwnProperty('getSpeed')){(function() {console.log(JSON.stringify(myTrain.getSpeed()));})();};
+
+        var Car = function(){
+          var wheels = 4;
+          var engine = 1;
+          var seats = 5;
+          var gear = 3;
+
+          function switchGear(toGear){
+              return this.gear = toGear;
+          };
+
+          this.getGear = function(){
+              return switchGear(18);
+          };
+
+          this.carDetails = function(){
+              return "Car has " + wheels + " wheels, " + engine + ", engine " + seats + " seats, current in Gear " + this.getGear() + ".";
+          }
+        };
+
+        var myCar = new Car();
+        console.log(myCar.carDetails());
+        console.log(myCar.getGear());
+
+        var Motorbike = function(){
+            var wheels = 2;
+            var engine = 1;
+            var speed = 100;
+
+            this.setSpeed = function(speedo){
+                return speed += speedo;
+            }
+
+            this.getSpeed = function(){
+                return speed;
+            }
+
+            this.details = function(){
+                return "Motorcycle has " + wheels + ", " + engine + " engine " + speed + " speed, its current speed is " + this.getSpeed() + ".";
+            }
+        }
+
+        var myBike = new Motorbike();
+
+        console.log(myBike.details());
+        console.log("Bike speed is " + myBike.getSpeed());
+        console.log("Increase bike speed by 789, bike speed now is " + myBike.setSpeed(789));
+
+        var Person = function(){
+            var name = "";
+            var age = 0;
+            var profession = "";
+
+            function details(){
+                return "Name: " + name + " Age: " + age + " Profession: " + profession + ".";
+            }
+
+            this.getDetails = function(){
+                return details();
+            }
+
+            this.getName = function(){
+                return name;
+            }
+
+            this.setName = function(newName){
+                name = newName
+            }
+
+            function getOld(year){
+                return age = age + year;
+            }
+
+            this.grow = function(year) {
+                return getOld(year);
+            }
+
+            this.getAge = function () {
+                return age;
+            }
+
+            this.setProfession = function(prof){
+                profession = prof;
+            }
+
+            this.getProfession = function(){
+                return profession;
+            }
+
+        }
+
+        var jiangli = new Person();
+        jiangli.setName("Jiangli");
+        console.log("Get name " + jiangli.getName());
+        jiangli.grow(88);
+        console.log("Jiangli's age " + jiangli.getAge());
+        jiangli.setProfession("Millionare");
+        console.log("Jiangli's profession " + jiangli.getProfession());
+        console.log("Person details " + jiangli.getDetails());
+
+        // array.reduce function is used to condense an array into a single value;
+        var array = [4,5,6,7,8];
+        var singleVal = 0;
+        singleVal = array.reduce(function(previousVal, currentVal){
+            return previousVal + currentVal;
+        });
+        console.log("Testing array.reduce function");
+        console.log((function() {return singleVal;})());
+
+        // array.map function, use it to iterate through an array or object;
+        var array2 = [1, 3, 5, 7, 9, 11];
+        array2 = array2.map(function (val) {
+            return val + 10;
+        });
+        console.log("Testing array.map function");
+        console.log((function() {return array2;})());
+
+        //array.filter is a useful method that can filter out values that don't match a certain criteria
+        var array3 = [1,2,3,4,5,6,7,8,9,10];
+        array3 = array3.filter(function(val){
+            return val >=5;
+        });
+        console.log("Testing array.filter function");
+        console.log((function() {return array3;})());
+
+//        array.sort(); array.concat(concatMeArray); array.sort(a, b){return a -b};
+//        var array = string.split(" ") split the string by its space;
+
+    })
+</script>   </body>
+</html>
